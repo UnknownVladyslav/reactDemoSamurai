@@ -1,0 +1,10 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    background-color: #2fa774;
+
+    height: 100%;
+
+    /*flex-grow: 3;*/
+}
+

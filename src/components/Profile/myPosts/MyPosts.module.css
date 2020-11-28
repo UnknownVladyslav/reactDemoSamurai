@@ -1,0 +1,10 @@
+.postsBlock {
+    display: flex;
+    flex-direction: column;
+
+    padding: 15px;
+}
+
+.posts {
+    margin-top: 15px;
+}

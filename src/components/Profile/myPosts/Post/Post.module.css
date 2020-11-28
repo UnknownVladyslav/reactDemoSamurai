@@ -1,0 +1,14 @@
+.item {
+    padding-bottom: 20px;
+}
+
+hr {
+    margin-top: 20px;
+}
+
+.postAvatar {
+    width: 90px;
+    width: 90px;
+
+    border-radius: 50%;
+}
