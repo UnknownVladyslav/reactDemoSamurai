@@ -10,6 +10,12 @@
     background-color: #2fa774;
 
     padding-bottom: 20px;
+
+    max-height: 100vh;
+
+    border: 3px solid #213155;
+
+    border-radius: 10px;
 }
 
 .navList {

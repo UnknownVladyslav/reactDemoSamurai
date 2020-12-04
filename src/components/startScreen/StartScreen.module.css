@@ -1,0 +1,22 @@
+.startTitle {
+    color: #213155;
+    text-align: center;
+
+    box-shadow: 0 0 10px 5px #ccc;
+
+    border-radius: 15px;
+
+    padding: 5px;
+    background-color: #ccc;
+}
+
+.startPageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #2fa774;
+    height: 88vh;
+    border: 3px solid #213155;
+    border-radius: 7px;
+}

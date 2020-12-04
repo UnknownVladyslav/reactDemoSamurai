@@ -1,0 +1,31 @@
+.friendItem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 5px;
+
+
+    min-width: 33%;
+}
+
+.friendItem a {
+    text-decoration: none;
+    color: white;
+    transition: all .5s;
+}
+
+.friendItem a:hover {
+    color: gold;
+    /*transition: all .3s;*/
+}
+
+.friendAvatar {
+    width: 70px;
+    height: auto;
+
+    border-radius: 50%;
+}
+
+.friendName {
+    text-align: center;
+}

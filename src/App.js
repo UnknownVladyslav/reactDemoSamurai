@@ -8,28 +8,35 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import {BrowserRouter, Route} from 'react-router-dom'
+import StartScreen from "./components/startScreen/StartScreen";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+
 
 
 const App = props => {
+    // debugger
     return (
         <BrowserRouter>
             <div className={classes.appWrapper}>
                 <Header/>
                 <div className={classes.flexContainer}>
-                    <Navbar/>
+                    <Navbar state={props.state.sidebar} />
                     <div className={classes.appWrapperContent}>
-                        {/*<Route component={Dialogs} exact path={'/dialogs'}/>*/}
-                        {/*<Route component={Profile} exact path={'/profile'}/>*/}
-                        {/*<Route component={News} exact path={'/news'}/>*/}
-                        {/*<Route component={Music} exact path={'/music'}/>*/}
-                        {/*<Route component={Settings} exact path={'/settings'}/>                */}
+                        <Route render={ () => <StartScreen /> } exact path={'/'} />
 
+                        <Route render={ () =>  <DialogsContainer
+                            store={props.store}
 
-                        <Route render={ () =>  <Dialogs posts={props.posts} dialogs={props.dialogs} messages={props.messages}  />} exact path={'/dialogs'}/>
-                        <Route render={ () => <Profile posts={props.posts} />} exact path={'/profile'}/>
-                        <Route render={ () => <News posts={props.posts} />} exact path={'/news'}/>
-                        <Route render={ () => <Music posts={props.posts} />} exact path={'/music'}/>
-                        <Route render={ () => <Settings posts={props.posts} />} exact path={'/settings'}/>
+                        />} exact path={'/dialogs'}/>
+
+                        <Route render={ () => <Profile
+                            store={props.store}
+
+                        />} exact path={'/profile'}/>
+
+                        <Route render={ () => <News />} exact path={'/news'}/>
+                        <Route render={ () => <Music />} exact path={'/music'}/>
+                        <Route render={ () => <Settings />} exact path={'/settings'}/>
                     </div>
                 </div>
             </div>

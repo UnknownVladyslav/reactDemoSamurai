@@ -1,0 +1,19 @@
+.FriendsWrapper {
+    padding: 15px;
+
+    margin-top: 50px;
+
+    color: white;
+}
+
+.friendsTitle {
+    font-weight: 400;
+
+    font-size: 32px;
+}
+
+.friendsList {
+    display: flex;
+    max-width: 100%;
+    /*flex-wrap: wrap;*/
+}
