@@ -3,36 +3,40 @@ import classes from './App.module.css'
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import {BrowserRouter, Route} from 'react-router-dom'
 import StartScreen from "./components/startScreen/StartScreen";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 
 const App = props => {
     // debugger
     return (
-        <BrowserRouter>
+        // <BrowserRouter>
             <div className={classes.appWrapper}>
                 <Header/>
                 <div className={classes.flexContainer}>
-                    <Navbar state={props.state.sidebar} />
+                    <Navbar
+                        // state={props.state.sidebar}
+                    />
                     <div className={classes.appWrapperContent}>
                         <Route render={ () => <StartScreen /> } exact path={'/'} />
 
                         <Route render={ () =>  <DialogsContainer
-                            store={props.store}
+                            // store={props.store}
 
                         />} exact path={'/dialogs'}/>
 
                         <Route render={ () => <Profile
-                            store={props.store}
+                            // store={props.store}
 
-                        />} exact path={'/profile'}/>
+                        />} exact path={'/profile'} />
+
+                        <Route exact path={'/users'} render={ () => <UsersContainer /> } />
 
                         <Route render={ () => <News />} exact path={'/news'}/>
                         <Route render={ () => <Music />} exact path={'/music'}/>
@@ -40,7 +44,7 @@ const App = props => {
                     </div>
                 </div>
             </div>
-        </BrowserRouter>
+        // </BrowserRouter>
     );
 }
 
