@@ -3,6 +3,25 @@
     flex-direction: column;
 
     padding: 15px;
+
+    /*margin-bottom: 20%;*/
+}
+
+.postTools h3 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.addPostForm {
+    display: flex;
+}
+
+.addPostForm button {
+    margin-left: 5px;
+    width: 10%;
+    background-color: #213155;
+    color: whitesmoke;
+    outline: none;
 }
 
 .posts {
@@ -15,6 +34,8 @@ textarea {
 
     max-width: 300px;
     max-height: 100px;
+
+    resize: none;
 
     outline: none;
 }

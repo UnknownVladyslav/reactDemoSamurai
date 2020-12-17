@@ -1,11 +1,13 @@
 import React from 'react'
+import { Users_API } from "../api/api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
-const FINISH_LOADING = 'FINISH_LOADING'
+const TOGGLE_LOADING = 'TOGGLE_LOADING'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 
 let initialState = {
@@ -13,7 +15,7 @@ let initialState = {
     pageSize: 20,
     totalUsersCount: 0,
     currentPage: 1,
-    loading: true
+    loading: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -54,10 +56,10 @@ const usersReducer = (state = initialState, action) => {
             return {...state, totalUsersCount: action.count}
         }
 
-        case FINISH_LOADING: {
+        case TOGGLE_LOADING: {
             return {
                 ...state,
-                loading: false
+                loading: action.loading
             }
         }
 
@@ -66,11 +68,28 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userID) => ({type: FOLLOW, userID})
-export const unfollowAC = (userID) => ({type: UNFOLLOW, userID})
-export const setUsersAC = users => ({type: SET_USERS, users})
-export const setCurrentPageAC = currentPage => ({type: SET_CURRENT_PAGE, currentPage})
-export const setUsersTotalCountAC = totalUsersCount => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
-export const finishLoadingAC = () => ({type: FINISH_LOADING})
+export const follow = (userID) => ({type: FOLLOW, userID})
+export const unfollow = (userID) => ({type: UNFOLLOW, userID})
+export const setUsers = users => ({type: SET_USERS, users})
+export const setCurrentPage = currentPage => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount });
+export const setIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
+export const setUsersTotalCount = totalUsersCount => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
+export const toggleLoading = loading => ({type: TOGGLE_LOADING, loading})
+
+export const requestUsers = (page, pageSize) => {
+
+    return async (dispatch) => {
+
+        dispatch(setIsFetching(true));
+        dispatch(setCurrentPage(page));
+
+        let data = await Users_API.getUsers(page, pageSize)
+        dispatch(setIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
+
+    }
+}
 
 export default usersReducer

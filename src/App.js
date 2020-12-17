@@ -10,6 +10,8 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import StartScreen from "./components/startScreen/StartScreen";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 
@@ -18,7 +20,7 @@ const App = props => {
     return (
         // <BrowserRouter>
             <div className={classes.appWrapper}>
-                <Header/>
+                <HeaderContainer />
                 <div className={classes.flexContainer}>
                     <Navbar
                         // state={props.state.sidebar}
@@ -26,15 +28,9 @@ const App = props => {
                     <div className={classes.appWrapperContent}>
                         <Route render={ () => <StartScreen /> } exact path={'/'} />
 
-                        <Route render={ () =>  <DialogsContainer
-                            // store={props.store}
+                        <Route render={ () =>  <DialogsContainer />} exact path={'/dialogs'}/>
 
-                        />} exact path={'/dialogs'}/>
-
-                        <Route render={ () => <Profile
-                            // store={props.store}
-
-                        />} exact path={'/profile'} />
+                        <Route render={ () => <ProfileContainer />} exact path={'/profile/:userId?'} />
 
                         <Route exact path={'/users'} render={ () => <UsersContainer /> } />
 

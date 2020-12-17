@@ -1,8 +1,50 @@
+.profilePage {
+    /*margin-bottom: 35%;*/
+    /*color: whitesmoke;*/
+}
+
 .userAvatar {
-    width: 100%;
-    height: 500px;
+    width: 20%;
+    height: 20%;
+
+    border: 3px solid black;
+    border-radius: 30%;
+}
+
+.userPageHeader {
+    display: flex;
+    margin: 20px 0 0 20px;
+
+    align-items: flex-start;
+}
+
+.nameAndStatus {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 50px;
+}
+
+.nameAndStatus strong {
+    font-size: 28px;
+}
+
+.nameAndStatus p {
+    font-size: 22px;
+}
+
+.userName {
+
 }
 
 .descriptionBlock {
     padding: 15px;
+}
+
+.descriptionBlock strong {
+    font-size: 24px;
+}
+
+.descriptionBlock p {
+    font-size: 20px;
 }
