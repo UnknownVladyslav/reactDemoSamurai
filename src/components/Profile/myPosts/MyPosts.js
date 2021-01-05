@@ -6,9 +6,9 @@ import Post from "./Post/Post";
 const MyPosts = props => {
 
     let postElements = props.posts
-        .map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+        .map(p => <Post message={p.message} likesCount={p.likesCount} profile={p.profile}/>)
 
-    let addPost = () => {
+    let addPost = text => {
         props.onAddPost()
     }
 
@@ -24,7 +24,11 @@ const MyPosts = props => {
                 <h3>My posts</h3>
                 <div className={classes.addPostForm}>
                     <textarea onChange={onPostChange} value={props.newPostText}/>
-                    <button onClick={addPost}>Add post</button>
+                    {props.newPostText.length > 0 ?
+                        <button onClick={addPost}>Add post</button>
+                        :
+                        <button onClick={addPost} disabled={true} style={{backgroundColor: 'grey'}}>Add post</button>
+                    }
                 </div>
             </div>
             <hr/>

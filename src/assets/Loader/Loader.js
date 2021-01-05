@@ -8,7 +8,7 @@ let loaderStyles = {
 const Loader = props => {
     return (
         <div className="loadingio-spinner-double-ring-916x1a6gya7">
-            <img src={loader} style={loaderStyles} />
+            <img src={loader} style={loaderStyles} alt={'loader'} />
         </div>
     )
 }

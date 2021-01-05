@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './ProfileInfo.module.css'
 import Loader from "../../../assets/Loader/Loader";
 import userAvatar from '../../../assets/images/avatar-batman-small.png'
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const ProfileInfo = props => {
 
@@ -18,7 +19,7 @@ const ProfileInfo = props => {
                 }
                 <div className={classes.nameAndStatus}>
                     <strong className={classes.userName}>{props.profile.fullName}</strong>
-                    <p>{props.profile.aboutMe}</p>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                 </div>
             </div>
 
