@@ -1,13 +1,11 @@
 import {profileAPI, usersAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
-export const onAddPost = () => ({ type: ADD_POST })
-
-export const updateNewPostText = (text) =>  ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const onAddPost = newPostBody => ({ type: ADD_POST, newPostBody })
 
 export const setUserProfile = profile => ({type: SET_USER_PROFILE, profile})
 
@@ -39,7 +37,7 @@ export const updateStatus = status => dispatch => {
 
 let initialState = {
     posts: [],
-    newPostText: '',
+    // newPostText: '',
     profile: null,
     status: ''
 }
@@ -49,20 +47,14 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             let newPost = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostBody,
                 likesCount: 0
             };
 
             let stateCopy = {...state}
             stateCopy.posts = [...state.posts]
             stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
 
-            return stateCopy
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText
             return stateCopy
         }
 
