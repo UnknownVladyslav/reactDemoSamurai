@@ -9,10 +9,14 @@ import {withRouter} from "react-router";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        // debugger
+
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = 13374
+            userId = this.props.authorizedUserId
+            // Если не имеем айди, делаем программный редирект через метод push у history
+            if (!userId) {
+                this.props.history.push('/login')
+            }
         }
         this.props.getUserProfile(userId)
         this.props.getUserStatus(userId)
@@ -21,7 +25,10 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <div>
-                <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}/>
+                <Profile {...this.props}
+                         profile={this.props.profile}
+                         status={this.props.status}
+                         updateStatus={this.props.updateStatus} />
             </div>
         )
     }
@@ -30,7 +37,9 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = state => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 })
 
 export default compose(

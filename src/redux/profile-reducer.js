@@ -10,7 +10,6 @@ export const onAddPost = newPostBody => ({ type: ADD_POST, newPostBody })
 export const setUserProfile = profile => ({type: SET_USER_PROFILE, profile})
 
 export const setUserStatus = status => ({type: SET_USER_STATUS, status})
-
 export const getUserProfile = userId => dispatch => {
             usersAPI.getProfile(userId)
             .then(response => {

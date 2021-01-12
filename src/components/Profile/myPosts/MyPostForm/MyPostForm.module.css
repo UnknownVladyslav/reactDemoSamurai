@@ -1,24 +1,12 @@
-.addPostForm form {
+.formWrapper {
     display: flex;
 }
 
 .addPostForm  button {
+    height: 54px;
     margin-left: 5px;
     width: 10%;
     background-color: #213155;
     color: whitesmoke;
-    outline: none;
-}
-
-
-textarea {
-    min-height: 50px;
-    min-width: 200px;
-
-    max-width: 300px;
-    max-height: 100px;
-
-    resize: none;
-
     outline: none;
 }

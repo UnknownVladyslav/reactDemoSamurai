@@ -1,7 +1,5 @@
 import React from 'react'
-import {act} from "@testing-library/react";
 import {usersAPI} from "../api/api";
-// import { Users_API } from "../api/api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -27,7 +25,6 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                // users: [...state.users]
                 users: state.users.map(u => {
                     if (u.id === action.userID) {
                         return {...u, followed: true}
@@ -39,7 +36,6 @@ const usersReducer = (state = initialState, action) => {
         case UNFOLLOW:
             return {
                 ...state,
-                // users: [...state.users]
                 users: state.users.map(u => {
                     if (u.id === action.userID) {
                         return {...u, followed: false}
@@ -92,10 +88,11 @@ export const toggleLoading = loading => ({type: TOGGLE_LOADING, loading})
 export const toggleFollowingProgress = (loading, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, loading, userId})
 
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
     return dispatch => {
         dispatch(toggleLoading(true))
-        usersAPI.getUsers(currentPage, pageSize)
+        dispatch(setCurrentPage(page))
+        usersAPI.requestUsers(page, pageSize)
             .then(data => {
                 dispatch(toggleLoading(false))
                 dispatch(setUsers(data.items))

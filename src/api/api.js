@@ -11,7 +11,7 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    getUsers(currentPage, pageSize = 10) {
+    requestUsers(currentPage, pageSize = 10) {
         return instance(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     },
@@ -45,8 +45,12 @@ export const authAPI = {
         return instance.get(`auth/me`)
     },
 
-    loginUser(userId) {
-        return instance.post(`auth.login` + userId)
+    login(email, password, rememberMe = false) {
+        return instance.post(`auth/login`, {email, password, rememberMe})
+    },
+
+    logout() {
+        return instance.delete(`auth/login`)
     }
 }
 

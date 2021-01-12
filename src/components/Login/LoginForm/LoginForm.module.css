@@ -1,3 +1,26 @@
 .loginWrapper {
+    width: 20%;
+}
 
+.rememberMe {
+    display: flex;
+    justify-content: start;
+}
+
+.rememberMe span {
+    margin-left: 10px;
+}
+
+.loginFormField {
+    /*padding: 0 0 0 0;*/
+}
+
+.formSummaryError {
+    padding: 5px;
+    width: 150%;
+}
+
+.formSummaryError strong {
+    color: #931212;
+    font-size: 12px;
 }

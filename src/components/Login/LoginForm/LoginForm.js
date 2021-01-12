@@ -1,21 +1,34 @@
 import React from 'react'
-import classes from './LoginForm.module.css'
 import {Field, reduxForm} from "redux-form";
+import {Input} from "../../FormsControls/FormsControls";
+import {required} from "../../../utils/validators/validators";
+import classes from './LoginForm.module.css'
 
 const LoginForm = (props) => {
     return <div className={classes.loginWrapper}>
         <h1>Login</h1>
         <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field placeholder={'Login'} name={'login'} component={'input'} />
+            <div className={classes.loginFormField}>
+                <Field placeholder={'Login'} name={'email'}
+                       validate={[required]}
+                       component={Input}/>
             </div>
-            <div>
-                <Field placeholder={'Password'} name={'password'} component={'input'} />
+            <div className={classes.loginFormField}>
+                <Field placeholder={'Password'} name={'password'}
+                       type={'password'}
+                       validate={[required]}
+                       component={Input}/>
             </div>
-            <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me
+            <div className={classes.loginFormField}>
+                <label className={classes.rememberMe}>
+                    <Field type={'checkbox'} name={'rememberMe'} component={Input}/>
+                    <span>remember me</span>
+                </label>
             </div>
-            <div>
+            {props.error && <div className={classes.formSummaryError}>
+                <strong>{props.error}</strong>
+            </div>}
+            <div className={classes.loginFormField}>
                 <button type={'submit'}>Log In</button>
             </div>
         </form>

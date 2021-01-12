@@ -1,11 +1,8 @@
 .Header {
     position: relative;
-    /*width: 100%;*/
     height: 100px;
     background-color: #213155;
     display: flex;
-
-    /*box-shadow: 0 0 15px 5px #cccccc;*/
     justify-content: space-between;
 }
 
@@ -28,4 +25,21 @@
     text-decoration: none;
 
     margin: 10px 20px 0 0;
+}
+
+.loginAndLogout {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.loginAndLogout button img {
+    position: absolute;
+    right: 5%;
+    top: 60%;
+    width: 40px;
+    height: 40px;
+    color: whitesmoke;
+    cursor: pointer;
 }

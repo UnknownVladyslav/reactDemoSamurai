@@ -4,12 +4,18 @@ import {
     follow,
     setCurrentPage,
     unfollow, toggleFollowingProgress,
-    getUsersThunkCreator
+    requestUsers
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Loader from "../../assets/Loader/Loader";
-import withAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getFollowingInProgress, getLoading,
+    getTotalUsersCount,
+    getUsers,
+    pageSize
+} from "../../redux/users-selectors";
 
 
 
@@ -17,12 +23,12 @@ import {compose} from "redux";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
     }
 
 
     onPageChanged = pageNumber => {
-         this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
+         this.props.requestUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -38,7 +44,7 @@ class UsersContainer extends React.Component {
                     unfollow={this.props.unfollow}
                     toggleFollowingProgress={this.props.toggleFollowingProgress}
                     followingInProgress={this.props.followingInProgress}
-                    // loading={this.props.loading}
+                    loading={this.props.loading}
                 />
             }
         </>
@@ -46,17 +52,27 @@ class UsersContainer extends React.Component {
 }
 
 
+// let mapStateToProps = state => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         followingInProgress: state.usersPage.followingInProgress
+//     }
+// }
+
+
 let mapStateToProps = state => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        // loading: state.usersPage.loading,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsers(state),
+        pageSize: pageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        loading: getLoading(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
-
 
 
 export default compose(
@@ -66,7 +82,6 @@ export default compose(
         unfollow,
         setCurrentPage,
         toggleFollowingProgress,
-        getUsersThunkCreator
-    }),
-    withAuthRedirect
+        requestUsers
+    })
 )(UsersContainer)

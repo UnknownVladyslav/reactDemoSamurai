@@ -1,10 +1,9 @@
 import React from 'react'
-import classes from './Users.module.css'
-import * as axios from 'axios'
-import userPhoto from '../../assets/images/avatar-batman-small.png'
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
-import {follow} from "../../redux/users-reducer";
+import userPhoto from '../../assets/images/avatar-batman-small.png'
+import classes from './Users.module.css'
+import Loader from "../../assets/Loader/Loader";
+
 
 
 let Users = props => {
@@ -15,6 +14,10 @@ let Users = props => {
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
+    }
+
+    if (props.loading) {
+        return <Loader />
     }
 
 
