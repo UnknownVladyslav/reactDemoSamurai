@@ -20,12 +20,11 @@ let Users = props => {
         return <Loader />
     }
 
-
     return <div className={classes.usersPage}>
         <div>
             <ul className={classes.pagesList}>
                 {pages.map(p => {
-                    return <li
+                    return <li key={p}
                         className={`${props.currentPage === p && classes.selectedPage} ${classes.pagesListItem}`}
                         onClick={e => {
                             props.onPageChanged(p)

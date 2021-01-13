@@ -11,7 +11,7 @@ const AddMessageForm = props => {
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field component={Textarea} validate={[required, maxLength50]} name={'dialogAddMessageForm'} placeholder={'Enter your message'} />
+                    <Field component={Textarea} validate={[maxLength50]} name={'dialogAddMessageForm'} placeholder={'Enter your message'} />
                 </div>
                 <button>Send message</button>
             </form>
