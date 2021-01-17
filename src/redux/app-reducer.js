@@ -1,6 +1,6 @@
 import {getAuthUserData} from "./auth-reducer";
 
-const INITIALIZING_SUCCESS = 'INITIALIZING_SUCCESS'
+const INITIALIZING_SUCCESS = 'samurai-network/app/INITIALIZING_SUCCESS'
 
 let initialState = {
     initialized: false

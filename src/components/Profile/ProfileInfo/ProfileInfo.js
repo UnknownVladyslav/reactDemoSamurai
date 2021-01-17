@@ -1,8 +1,7 @@
 import React from 'react'
 import classes from './ProfileInfo.module.css'
-import Loader from "../../../assets/Loader/Loader";
+import Loader from "../../common/Loader/Loader";
 import userAvatar from '../../../assets/images/avatar-batman-small.png'
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = props => {

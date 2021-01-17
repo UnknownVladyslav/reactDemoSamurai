@@ -2,40 +2,40 @@ import {profileAPI, usersAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_USER_STATUS = 'SET_USER_STATUS'
+const SET_USER_PROFILE = 'samurai-network/profile/SET_USER_PROFILE'
+const SET_USER_STATUS = 'samurai-network/profile/SET_USER_STATUS'
+const DELETE_POST = 'samurai-network/profile/DELETE_POST'
 
 export const onAddPost = newPostBody => ({ type: ADD_POST, newPostBody })
+
+export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
 export const setUserProfile = profile => ({type: SET_USER_PROFILE, profile})
 
 export const setUserStatus = status => ({type: SET_USER_STATUS, status})
-export const getUserProfile = userId => dispatch => {
-            usersAPI.getProfile(userId)
-            .then(response => {
+export const getUserProfile = userId => async dispatch => {
+            let response = await usersAPI.getProfile(userId)
                 dispatch(setUserProfile(response.data))
-            })
 }
 
-export const getUserStatus = userId => dispatch => {
-    profileAPI.getStatus(userId)
-        .then( response => {
+export const getUserStatus = userId => async dispatch => {
+    let response = await profileAPI.getStatus(userId)
         dispatch(setUserStatus(response.data))
-    })
 }
 
-export const updateStatus = status => dispatch => {
-    profileAPI.updateStatus(status)
-        .then( response => {
+export const updateStatus = status => async dispatch => {
+    let response = await profileAPI.updateStatus(status)
             if (response.data.resultCode === 0) {
                 dispatch(setUserStatus(status))
-            }
-    })
+    }
 }
 
 
 let initialState = {
-    posts: [],
+    posts: [ {postId: 1,
+        message: 'Hello world!',
+        // likesCount: 12
+            } ],
     // newPostText: '',
     profile: null,
     status: ''
@@ -63,6 +63,10 @@ const profileReducer = (state = initialState, action) => {
 
         case SET_USER_STATUS: {
             return {...state, status: action.status}
+        }
+
+        case DELETE_POST: {
+            return {...state, posts: state.posts.filter(p => p.id !== action.postId)}
         }
 
         default:

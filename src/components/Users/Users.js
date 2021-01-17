@@ -1,64 +1,28 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
-import userPhoto from '../../assets/images/avatar-batman-small.png'
+import Loader from "../common/Loader/Loader";
+import Paginator from "../common/Paginator/Paginator";
 import classes from './Users.module.css'
-import Loader from "../../assets/Loader/Loader";
+import User from "./User";
 
 
-
-let Users = props => {
-
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize) / 25
-
-    let pages = []
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
 
     if (props.loading) {
-        return <Loader />
+        return <Loader/>
     }
 
     return <div className={classes.usersPage}>
+        <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
+                   totalUsersCount={totalUsersCount} pageSize={pageSize}/>
         <div>
-            <ul className={classes.pagesList}>
-                {pages.map(p => {
-                    return <li key={p}
-                        className={`${props.currentPage === p && classes.selectedPage} ${classes.pagesListItem}`}
-                        onClick={e => {
-                            props.onPageChanged(p)
-                        }}>{p}</li>
-                })}
-            </ul>
+            {
+                users.map(u => <User key={u.id} user={u}
+                                     followingInProgress={props.followingInProgress}
+                                     follow={props.follow} unfollow={props.unfollow}
+                />)
+
+            }
         </div>
-        {
-            props.users.map(u => <div key={u.id}>
-
-                    <div>
-                        <NavLink to={'/profile/' + u.id}><img
-                            src={u.photos.small != null ? u.photos.small : userPhoto}/></NavLink>
-                    </div>
-
-                    <div>
-                        {u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => { props.follow(u.id) }}>Follow</button>}
-                    </div>
-
-
-                    <div>{u.name}</div>
-                    <div>{u.status}</div>
-
-
-                    <div>{'u.location.country'}</div>
-                    <div>{'u.location.city'}</div>
-
-
-                </div>
-            )
-        }
     </div>
 }
-
 export default Users

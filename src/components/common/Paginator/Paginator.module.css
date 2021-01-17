@@ -1,0 +1,15 @@
+
+.pagesList {
+    margin-bottom: 20px;
+}
+
+.pagesListItem {
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.selectedPage {
+    font-weight: 700;
+}

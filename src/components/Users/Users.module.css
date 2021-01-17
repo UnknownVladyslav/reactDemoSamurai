@@ -2,21 +2,6 @@
     margin-right: 5px;
 }
 
-.pagesList {
-    margin-bottom: 20px;
-}
-
-.pagesListItem {
-    list-style: none;
-    cursor: pointer;
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.selectedPage {
-    font-weight: 700;
-}
-
 .usersPage img {
     width: 90px;
     height: 90px;

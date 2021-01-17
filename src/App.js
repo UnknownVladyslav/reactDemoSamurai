@@ -14,7 +14,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import StartScreen from "./components/startScreen/StartScreen";
 import classes from './App.module.css'
-import Loader from "./assets/Loader/Loader";
+import Loader from "./components/common/Loader/Loader";
 
 
 class App extends React.Component {

@@ -1,13 +1,13 @@
 import React from 'react'
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../FormsControls/FormsControls";
+import {Input} from "../../common/FormsControls/FormsControls";
 import {required} from "../../../utils/validators/validators";
 import classes from './LoginForm.module.css'
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return <div className={classes.loginWrapper}>
         <h1>Login</h1>
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className={classes.loginFormField}>
                 <Field placeholder={'Login'} name={'email'}
                        validate={[required]}
@@ -25,8 +25,8 @@ const LoginForm = (props) => {
                     <span>remember me</span>
                 </label>
             </div>
-            {props.error && <div className={classes.formSummaryError}>
-                <strong>{props.error}</strong>
+            {error && <div className={classes.formSummaryError}>
+                <strong>{error}</strong>
             </div>}
             <div className={classes.loginFormField}>
                 <button type={'submit'}>Log In</button>

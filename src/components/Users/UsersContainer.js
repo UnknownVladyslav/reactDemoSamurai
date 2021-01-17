@@ -7,7 +7,7 @@ import {
     requestUsers
 } from "../../redux/users-reducer";
 import Users from "./Users";
-import Loader from "../../assets/Loader/Loader";
+import Loader from "../common/Loader/Loader";
 import {compose} from "redux";
 import {
     getCurrentPage,
@@ -23,15 +23,18 @@ import {
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        let {currentPage, pageSize} = this.props
+        this.props.requestUsers(currentPage, pageSize)
     }
 
 
     onPageChanged = pageNumber => {
-         this.props.requestUsers(pageNumber, this.props.pageSize)
+        let {pageSize} = this.props
+         this.props.requestUsers(pageNumber, pageSize)
     }
 
     render() {
+
         return <>
             {this.props.loading ? <Loader/> :
                 <Users
@@ -50,18 +53,6 @@ class UsersContainer extends React.Component {
         </>
     }
 }
-
-
-// let mapStateToProps = state => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
-
 
 let mapStateToProps = state => {
     return {
