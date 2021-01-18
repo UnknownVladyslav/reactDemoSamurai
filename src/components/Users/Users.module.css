@@ -1,10 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+.usersPage {
+    display: flex;
+    flex-direction: column;
+    background-color: #2fa774;
+    border: 3px solid #213155;
+    border-radius: 10px;
+    min-height: 88vh;
+}
+
+.usersList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 2% 10% 0 10%;
+    /*display: grid;*/
+    /*grid-template-columns: 33% 33% 33%;*/
+    /*grid-template-rows: 25% 25% 25% 25%;*/
+    /*justify-items: center;*/
+
+    height: 100%;
+
+}
+
 .usersPage ul li {
     margin-right: 5px;
 }
+
 
 .usersPage img {
     width: 90px;
     height: 90px;
 
     border-radius: 50%;
+}
+
+
+/*paginator styles*/
+
+.paginator {
+    margin: 1% auto 0 auto;
+}
+
+.paginator ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    /*min-width: 430px;*/
+    /*max-width: 470px;*/
+}
+
+.paginator ul li {
+    font-size: 20px;
+    width: 37px;
+    margin: 0 8px;
+    text-align: center;
+    /*padding: 2px;*/
+    /*border-bottom: 2px solid transparent;*/
+    border: 2px solid transparent;
+    border-radius: 25%;
+}
+
+.pagesListItem {
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.pagesListItem:hover {
+    background-color: #cecece;
+}
+
+.selectedPage {
+    font-weight: 700;
+}
+
+.paginator ul button {
+    width: 35px;
+    color: white;
+    background-color: #213155;
+    border-radius: 10%;
+    outline: none;
+}
+
+.paginator ul button:active {
+    opacity: 0.7;
+    background-color: #cecece;
+    color: #213155;
 }

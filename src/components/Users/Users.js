@@ -1,8 +1,8 @@
 import React from 'react'
 import Loader from "../common/Loader/Loader";
 import Paginator from "../common/Paginator/Paginator";
+import User from "./User/User";
 import classes from './Users.module.css'
-import User from "./User";
 
 
 const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
@@ -13,8 +13,8 @@ const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ..
 
     return <div className={classes.usersPage}>
         <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
-                   totalUsersCount={totalUsersCount} pageSize={pageSize}/>
-        <div>
+                   totalItemsCount={totalUsersCount} portionSize={pageSize}/>
+        <div className={classes.usersList}>
             {
                 users.map(u => <User key={u.id} user={u}
                                      followingInProgress={props.followingInProgress}

@@ -1,0 +1,57 @@
+.userCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    width: 30%;
+    min-height: 200px;
+    margin-bottom: 5px;
+
+    border: 1px solid transparent;
+
+    padding: 10px 0;
+
+    transition: all .3s;
+}
+
+.userCard:hover {
+    border: 1px solid rgba(0, 0, 0,.3);
+    cursor: pointer;
+
+    box-shadow: 0 0 10px 3px #213155;
+
+    transform: scale(1.05);
+}
+
+.userName {
+    font-weight: bold;
+}
+
+.followButton {
+    padding: 3px;
+    outline: none;
+    border: 1px black solid;
+    border-radius: 15%;
+    font: inherit;
+    color: whitesmoke;
+    background-color: #213155;
+    transition: all .3s;
+
+    margin-top: 5px;
+}
+
+.followButton:disabled {
+    background-color: #01153f;
+    opacity: 50%;
+}
+
+
+.followButton:hover {
+    cursor: pointer;
+}
+
+.followButton:active {
+    transform: scale(.9);
+}

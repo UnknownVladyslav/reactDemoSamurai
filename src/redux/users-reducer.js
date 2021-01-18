@@ -14,7 +14,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'users/TOGGLE_IS_FOLLOWING_PROGRESS'
 
 let initialState = {
     users: [],
-    pageSize: 20,
+    pageSize: 12,
     totalUsersCount: 0,
     currentPage: 1,
     loading: false,
