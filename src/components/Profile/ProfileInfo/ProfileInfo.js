@@ -19,7 +19,11 @@ const ProfileInfo = props => {
                 }
                 <div className={classes.nameAndStatus}>
                     <strong className={classes.userName}>{props.profile.fullName}</strong>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+                    <ProfileStatusWithHooks status={props.status}
+                                            updateStatus={props.updateStatus}
+                                            userId={props.userId}
+                                            profile={props.profile}
+                                            authorizedUserId={props.authorizedUserId} />
                 </div>
             </div>
 

@@ -9,11 +9,13 @@ const ProfileStatusWithHooks = props => {
 
     useEffect(() => {
         setStatus(props.status)
-        // console.log('USE EFFECT')
-    }, [props.status] )
+    }, [props.status])
 
     const activateEditMode = () => {
-        setEditMode(true)
+        props.profile.userId === props.authorizedUserId ?
+            setEditMode(true)
+            :
+            setEditMode(false)
     }
 
     const onStatusChange = e => {
@@ -27,7 +29,6 @@ const ProfileStatusWithHooks = props => {
 
     return (
         <div>
-            {/*{console.log('rerender')}*/}
             {!editMode &&
             <div className={classes.inputWrapper}>
                 {props.status ?
@@ -37,7 +38,6 @@ const ProfileStatusWithHooks = props => {
                 }
             </div>
             }
-
             {editMode &&
             <div className={classes.inputWrapper}>
                 <input onChange={onStatusChange}
@@ -49,5 +49,6 @@ const ProfileStatusWithHooks = props => {
         </div>
     )
 }
+
 
 export default ProfileStatusWithHooks
