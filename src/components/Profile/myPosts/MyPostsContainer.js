@@ -3,17 +3,12 @@ import {onAddPost} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {useEffect} from "react/cjs/react.production.min";
 
-// let userId = this.props.match.params.userId
-// useEffect( () =>
-// this.props.getUserProfile(userId),
-//     [])
-
-let mapStateToProps = state => ({
+let mapStateToProps = (state) => ({
     posts: state.profilePage.posts,
-    // userId: state.profilePage.profile.userId,
-    authorizedUserId: state.auth.userId
+    authorizedUserId: state.auth.userId,
+    // userId: state.profile.userId,
+    // profile: props.profile
 })
 
 let mapDispatchToProps = dispatch => {

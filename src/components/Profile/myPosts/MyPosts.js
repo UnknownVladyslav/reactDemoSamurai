@@ -4,13 +4,13 @@ import Post from "./Post/Post";
 import MyPostReduxForm from "./MyPostForm/MyPostForm";
 
 
-const MyPosts = React.memo(({posts, addPost}) => {
+const MyPosts = React.memo(({posts, addPost, userId, authorizedUserId, profile}) => {
 
     let postElements = posts
         .map(p => <Post message={p.message} likesCount={p.likesCount} profile={p.profile}/>)
 
     const addNewPost = values => {
-        // if (userId === authorizedUserId) {
+    // if (profile.userId === authorizedUserId) {
             addPost(values.newPostBody)
         // }
     }
