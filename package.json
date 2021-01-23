@@ -1,7 +1,7 @@
 {
+  "homepage": "https://UnknownVladyslav.github.io/reactSamuraiProject",
   "name": "react-kamasutra",
   "version": "0.1.0",
-  "homepage": "https://unknownvladyslav.github.io/demoReactSamuraiProject",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -25,12 +25,12 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
