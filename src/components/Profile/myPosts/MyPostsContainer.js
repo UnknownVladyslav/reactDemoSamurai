@@ -6,10 +6,11 @@ import {compose} from "redux";
 
 let mapStateToProps = (state) => ({
     posts: state.profilePage.posts,
-    authorizedUserId: state.auth.userId,
+    authorizedUserId: state.auth.userId
     // userId: state.profile.userId,
     // profile: props.profile
 })
+
 
 let mapDispatchToProps = dispatch => {
     return {
